@@ -1,0 +1,31 @@
+public class Main {
+    public String rearrangeWords(String s) {
+        s = s.toLowerCase();
+        String[] words = s.split(" ");
+        for(int i = 0; i < words.length - 1; i++){
+            for(int j = 0; j < words.length - i - 1; j++){
+
+                if(words[j].length() > words[j + 1].length()){
+                    String temp = words[j];
+                    words[j] = words[j + 1];
+                    words[j + 1] = temp;
+                }
+            }
+        }
+        String result = "";
+        for(int i = 0; i < words.length; i++){
+            result = result + words[i];
+
+            if(i != words.length - 1){
+                result = result + " ";
+            }
+        }
+        result = Character.toUpperCase(result.charAt(0)) + result.substring(1);
+        return result;
+    }
+    public static void main(String[] args){
+        String val = "hello iam batman";
+        Main obj = new Main();
+        System.out.println(obj.rearrangeWords(val));
+    }
+}
